@@ -1,5 +1,3 @@
-let x = 0;
-let y = 0;
 
 function gameboard() {
   const rows = 3;
@@ -13,55 +11,53 @@ function gameboard() {
     }
   }
 
-  const getBoard = () => board;
+//const getBoard = () => board;
+  function getBoard(){
+    return board;
+  }
+
+  function makeMove() {
+    console.log()
+  };
 
 
+  return { getBoard, 
+            makeMove, 
+            // updateBoard 
+        };
+};
 
-//   const makeMove = (x, y, player) => {
-//     if (board[x][y] !== " ") return;
-
-//     board[x][y].addToken(player);
-//   };
-
-
-
-//   const updateBoard = () => {
-//     const boardWithCellValues = board.map((row) =>
-//       row.map((box) => box.getValue())
-//     );
-//     console.log(boardWithCellValues);
-//   };
-
-
-//   return { getBoard, makeMove, updateBoard };
-return board;
-}
-
-
-
+// console.log(gameboard());
 
 function box() {
-  let value = "why";
+    let value = "why";
 
-//   const addToken = (player) => {
-//     value = player;
-//   };
+    const playerToken = (player) =>{
+        value = player;
+    };
 
-//   const getValue = () => value;
+    const getValue = () => value;
+    
+    // if (game.getPlayerTurn === player[0])
+    // {console.log("Toni Turn");}
+    // else {console.log("Bo Turn");}
 
-//   return {
-//     addToken,
-//     getValue,
-//   };
-return value;
-}
+    return{
+        getValue,
+        playerToken
+    }
+  }
+
+
+
+
 
 function gamePlay() {
   const playerOneName = "Toni";
   const playerTwoName = "Botoman";
   const board = gameboard();
 
-  const players = [
+  const player = [
     {
       name: playerOneName,
       token: "X",
@@ -72,32 +68,39 @@ function gamePlay() {
     },
   ];
 
-  let turn = players[0];
+  let activePlayer = player[0];
 
 
-  const turnSwitch = () => {
-    turn = turn === players[0] ? players[1] : players[0]; 
-  };
+  function switchPlayer(){ 
+    if (activePlayer === player[0]){
+        activePlayer = player[1];
+    }
+    else {activePlayer = player[0];}
+    console.log(activePlayer)    
+    };
 
-  const getPlayerTurn = () => turn;
+//   const getPlayerTurn = () => activePlayer;
+    function getPlayerTurn(){
+        return activePlayer;
+    };
 
-  const playRound = (x, y) => {
-    board.makeMove(x, y, getPlayerTurn().token);
 
-    turnSwitch();
-    updateBoard();
-    console.log(getPlayerTurn().token);
-  }
 
-console.log(board);
+
 return {
-    playRound,
-    turnSwitch
+    // playRound,
+    switchPlayer,
+    getPlayerTurn
+    };
 };
 
-};
+const game = gamePlay();
 
-console.table(gamePlay());
+game.switchPlayer();
+game.switchPlayer();
+game.switchPlayer();
+console.log(game.getPlayerTurn());
+
 
 // console.table(gamePlay());
 // console.table(getBoard());
