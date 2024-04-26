@@ -26,9 +26,39 @@ function gameboard() {
     }
   };
 
+  function checkWin(){
+    // if (board[0][0] === "X" && board[0][1] === "X" && board[0][2] === "X"){
+    //     console.log("YOU FUCKIN WON.")
+    // }
+
+    for (let i = 0; i < rows; i++) {
+        let xes = 0;
+        let oes = 0;
+        for (let j = 0; j < columns; j++) {
+
+          if(board[i][j] === "X"){
+            xes++;
+          }
+          else if (board[i][j] === "O"){
+            oes++
+          }
+          
+          if(xes === 3){
+            console.log("X WINS MY DUDE");
+          }
+          else if(oes === 3){
+            console.log("O WINS MY DUDE");
+          }
+          
+        }
+        console.log("x: " + xes);
+    };
+};
+
 
   return { getBoard, 
             makeMove, 
+            checkWin
         };
 };
 
@@ -89,22 +119,22 @@ function gamePlay() {
     //     return activePlayer;
     // };
 
+
+
+
+
+
+
     function playRound(){
         console.log("Playing: " + getPlayerTurn().name);
         let x = prompt("enter X: ")
         let y = prompt("enter Y: ")
-        // if (board[x][y] === ""){
-        //     // board.makeMove(x, y);
-        // console.log("ok by me");
-        // }
-        // else {
-        //     return
-        // }
+
         board.makeMove(x, y);
         
         console.table(board.getBoard());
         // switchPlayer();
-        //checkWin
+        board.checkWin();
         playRound();
     };
 
@@ -114,7 +144,7 @@ function gamePlay() {
 return {
     playRound,
     switchPlayer,
-    getPlayerTurn
+    getPlayerTurn,
     };
 };
 
@@ -132,5 +162,5 @@ const cell = box();
 // game.switchPlayer();
 // board.makeMove(2,0);
 console.table(board.getBoard());
-console.log(game.playRound())
-console.log(game.playRound())
+console.log(game.playRound());
+console.log(game.playRound());
