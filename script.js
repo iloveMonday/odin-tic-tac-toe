@@ -27,32 +27,103 @@ function gameboard() {
   };
 
   function checkWin(){
-    // if (board[0][0] === "X" && board[0][1] === "X" && board[0][2] === "X"){
-    //     console.log("YOU FUCKIN WON.")
-    // }
+    let xWin = 0;
+    let oWin = 0;
 
+    function checkAcross(){
     for (let i = 0; i < rows; i++) {
-        let xes = 0;
-        let oes = 0;
+        let xRow = 0;
+        let oRow = 0;
         for (let j = 0; j < columns; j++) {
-
           if(board[i][j] === "X"){
-            xes++;
+            xRow++;
           }
           else if (board[i][j] === "O"){
-            oes++
+            oRow++
           }
           
-          if(xes === 3){
-            console.log("X WINS MY DUDE");
+          if(xRow === 3){
+            xWin++;
           }
-          else if(oes === 3){
-            console.log("O WINS MY DUDE");
-          }
-          
+          else if(oRow === 3){
+            oWin++;;
+          } 
         }
-        console.log("x: " + xes);
+    };};
+
+    function checkDown(){
+    for (let i = 0; i < rows; i++) {
+        let xCol = 0;
+        let oCol = 0;
+        for (let j = 0; j < columns; j++) {
+          if(board[j][i] === "X"){
+            xCol++;
+          }
+          else if (board[j][i] === "O"){
+            oCol++
+          }
+       
+          if(xCol === 3){
+            xWin++;
+          }
+          else if(oCol === 3){
+            oWin++;;
+          } 
+        }
+    };};
+
+    function checkDiagonal(){
+        let xDown = 0;
+        let oDown = 0; 
+        for (let i = 0; i < rows; i++){
+            if(board[i][i] === "X"){
+                xDown++
+            }
+            else if (board[i][i] === "O"){
+                oDown++
+            }
+            if(xDown === 3){
+                xWin++;
+              }
+              else if(oDown === 3){
+                oWin++;;
+              } 
+        };
+
+            let d = 2
+            let xUp = 0;
+            let oUp = 0;
+            for (let i=0; i < rows; i++){
+                if(board[i][d] === "X"){
+                    xUp++
+                }
+                else if (board[i][d] === "O"){
+                    oUp++
+                }
+                d--;
+
+                if(xUp === 3){
+                    xWin++;
+                  }
+                  else if(oUp === 3){
+                    oWin++;;
+                  } 
+            }
     };
+
+    function returnWin(){
+        if(xWin === 1){
+        console.log("X WINS MY DUDE");
+    }
+        else if(oWin === 1){
+        console.log("O WINS MY DUDE");
+    }};
+
+
+    checkAcross();
+    checkDown();
+    checkDiagonal();
+    returnWin();
 };
 
 
