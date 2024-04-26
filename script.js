@@ -16,36 +16,42 @@ function gameboard() {
     return board;
   }
 
-  function makeMove() {
-    console.log()
+  function makeMove(x, y) {
+    if (board[x][y] === "X" || board[x][y] ==="O"){
+        console.log("naw man no way");
+    }
+    else {
+        board[x][y] = cell.playerToken(game.getPlayerTurn().token);
+        game.switchPlayer();
+    }
   };
 
 
   return { getBoard, 
             makeMove, 
-            // updateBoard 
         };
 };
 
-// console.log(gameboard());
+
+
+
 
 function box() {
-    let value = "why";
+    let value = "";
 
-    const playerToken = (player) =>{
+    function playerToken(player) {
         value = player;
+        return value;
     };
 
-    const getValue = () => value;
-    
-    // if (game.getPlayerTurn === player[0])
-    // {console.log("Toni Turn");}
-    // else {console.log("Bo Turn");}
+    function getValue(){
+        return value;
+    };
 
-    return{
+    return   {
         getValue,
         playerToken
-    }
+    };
   }
 
 
@@ -75,52 +81,56 @@ function gamePlay() {
     if (activePlayer === player[0]){
         activePlayer = player[1];
     }
-    else {activePlayer = player[0];}
-    console.log(activePlayer)    
+    else {activePlayer = player[0];}   
     };
 
-//   const getPlayerTurn = () => activePlayer;
-    function getPlayerTurn(){
-        return activePlayer;
+  const getPlayerTurn = () => activePlayer;
+    // function getPlayerTurn(){
+    //     return activePlayer;
+    // };
+
+    function playRound(){
+        console.log("Playing: " + getPlayerTurn().name);
+        let x = prompt("enter X: ")
+        let y = prompt("enter Y: ")
+        // if (board[x][y] === ""){
+        //     // board.makeMove(x, y);
+        // console.log("ok by me");
+        // }
+        // else {
+        //     return
+        // }
+        board.makeMove(x, y);
+        
+        console.table(board.getBoard());
+        // switchPlayer();
+        //checkWin
+        playRound();
     };
 
 
 
 
 return {
-    // playRound,
+    playRound,
     switchPlayer,
     getPlayerTurn
     };
 };
 
+
+
 const game = gamePlay();
-
-game.switchPlayer();
-game.switchPlayer();
-game.switchPlayer();
-console.log(game.getPlayerTurn());
+const board = gameboard();
+const cell = box();
 
 
-// console.table(gamePlay());
-// console.table(getBoard());
-
-// function game(
-//     playerOneName = "Tony",
-//     playerTwoName = "Computer")
-//     {
-//         const board = gameboard();
-//         const players = [
-//             {
-//                 name: playerOneName,
-//                 token: "X"
-//             },
-//             {
-//                 name: playerTwoName,
-//                 token: "O"
-//             }
-//         ]
-
-//         return {board, players};
-// }
-
+// game.switchPlayer();
+// console.log(game.getPlayerTurn().token);
+// board.makeMove(1, 1);
+// console.table(board.getBoard());
+// game.switchPlayer();
+// board.makeMove(2,0);
+console.table(board.getBoard());
+console.log(game.playRound())
+console.log(game.playRound())
