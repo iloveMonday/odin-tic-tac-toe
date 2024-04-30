@@ -1,14 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <script src="./script.js" defer></script>
-    <link rel="stylesheet" type="text/css" href="./styles.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tick Tacktow</title>
-</head>
-<body>
-    heck the planet.
-    
-</body>
+    <link rel="stylesheet" type="text/css" href="./styles.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tick Tack</title>
+  </head>
+  <body>
+    <div class="title">heck the planet.</div>
+    <div id="grid"></div>
+    <div class="players">
+      <div class="p1-info">
+          <p class="p1-token">X</p>
+          <label for="p1-name" class="p1-name">Player 1:</label>
+          <input type="text" id="p1-name" />
+      </div>
+      <div class="p2-info">
+          <p class="p2-token">O</p>
+          <label for="p2-name" class="p2-name">Player 2:</label>
+          <input type="text" id="p2-name" />
+      </div>
+    </div>
+    <div class="button-container">
+      <button class="reset"></button>
+    </div>
+  </body>
 </html>
