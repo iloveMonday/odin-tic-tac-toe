@@ -12,24 +12,7 @@ function gameboard() {
     }
   }
 
-  function buildBoard() {
-    let buttonWidth = grid.offsetWidth;
-    let buttonSize = (buttonWidth / 3 / buttonWidth) * 100 + "%";
-    for (let i = 0; i < rows; i++) {
-      for (let j = 0; j < columns; j++) {
-        let newButton = document.createElement("button");
-        newButton.className = [i] + [j];
-        newButton.style.height = buttonSize;
-        newButton.style.width = buttonSize;
-        grid.appendChild(newButton);
-      }
-    }
-  }
-
   const getBoard = () => board;
-  //   function getBoard() {
-  //     return board;
-  //   }
 
   function makeMove(x, y) {
     if (board[x][y] === "X" || board[x][y] === "O") {
@@ -135,7 +118,6 @@ function gameboard() {
 
   return {
     getBoard,
-    buildBoard,
     makeMove,
     checkWin,
   };
@@ -227,18 +209,15 @@ function screenController() {
         grid.appendChild(newButton);
       });
     });
-    handleClick();
+    // handleClick();
   }
 
   function handleClick() {
-
-  let gridButton = document.querySelector(".board-button");
-  gridButton.addEventListener("click", () =>{
+    let gridButton = document.querySelector(".board-button");
+    gridButton.addEventListener("click", () => {
       gridButton.style.backgroundColor = "red";
-  })
-
-  };
-
+    });
+  }
 
   return { updateScreen, handleClick };
 }
