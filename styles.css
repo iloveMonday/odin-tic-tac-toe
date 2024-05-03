@@ -10,12 +10,19 @@ button{
 #grid{
     display: flex;
     margin: 0 auto;
-    background-color: aqua;
+    /* background-color: aqua; */
+    background-image: url(./pelosi.jpg);
+    background-size: contain;
+    border: solid black 2px;
     width: 70vw;
     height: 70vw;
     max-height: 70vh;
     max-width: 70vh;
     flex-wrap: wrap;
+}
+
+.board-button{
+    font-size: 2rem;
 }
 
 .players{
