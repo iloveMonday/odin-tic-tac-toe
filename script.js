@@ -1,5 +1,5 @@
 function gameboard() {
-  const board = [];
+  let board = [];
   let gameover = false;
 
   for (let i = 0; i < 9; i++) {
@@ -37,37 +37,55 @@ function gameboard() {
     game.switchPlayer();
     let winner = game.getPlayerTurn().name;
     console.log(winner + " is the WINNER");
+
+
+    let winModal = document.getElementById("win-modal");
+    let close = document.querySelector(".close");
+    let resetModal = document.getElementById("modal-reset");
+
+    winModal.style.display = "block";
+    winModal.innerHTML = (winner + " is the WINNER");
+      
+    close.addEventListener("click", () =>{
+          winModal.style.display = "none";
+    });
+
+    resetModal.addEventListener("click", () =>{
+        location.reload();
+    })
+
+
+
+
   }
 
-  function resetBoard() {
-    board = [];
+//   function resetBoard() {
+//     board = [];
 
-    for (let i = 0; i < 9; i++) {
-      board.push(i);
-    }
-  }
+//     for (let i = 0; i < 9; i++) {
+//       board.push(i);
+//     }
+//     screen.updateScreen();
+//   }
 
-  return { getBoard, makeMove, checkWin, endGame, resetBoard, isGameOver };
+  return { getBoard, makeMove, checkWin, endGame, isGameOver };
 }
 
 function gamePlay() {
-  let playerOneName = "Toni";
-  let playerTwoName = "Botoman";
-
   const player = [
     {
-      name: playerOneName,
+      name: "",
       token: "X",
     },
     {
-      name: playerTwoName,
+      name: "",
       token: "O",
     },
   ];
 
   const updateNames = function (x, y) {
-    playerOneName = x;
-    playerTwoName = y;
+    player[0].name = x;
+    player[1].name = y;
   };
 
   let activePlayer = player[0];
@@ -86,7 +104,6 @@ function gamePlay() {
       console.log("Now Playing: " + getPlayerTurn().name);
       gboard.makeMove(x);
       screen.updateScreen();
-      // console.table(gboard.getBoard());
       gboard.checkWin();
     }
   }
@@ -156,12 +173,11 @@ const screen = screenController();
 
 const start = document.getElementById("start");
 start.addEventListener("click", () => {
-  //   screen.updateScreen();
-  //   screen.handleClick();
   screen.startGame();
 });
 
 const reset = document.getElementById("reset");
 reset.addEventListener("click", () => {
   location.reload();
+// gboard.resetBoard();
 });

@@ -1,10 +1,17 @@
 body{
     background-color: darkseagreen;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 button{
+    background-color: cornflowerblue;
     height: 50px;
-    width: 100px;
+    width: 35vw;
+    max-width: 35vh;
+    border: solid brown 2px;
 }
 
 #grid{
@@ -13,7 +20,7 @@ button{
     /* background-color: aqua; */
     background-image: url(./pelosi.jpg);
     background-size: contain;
-    border: solid black 2px;
+    /* border: solid black 2px; */
     width: 70vw;
     height: 70vw;
     max-height: 70vh;
@@ -28,11 +35,45 @@ button{
 .players{
     display: flex;
     justify-content: center;
-    gap: 10px;
+    /* gap: 10px; */
+    /* width: 70vh;
+    max-width: 70vh; */
 }
+
+/* .p1-info{
+    background-image: url(./X.png);
+    background-size: contain;
+}
+
+.p2-info{
+    background-image: url(./Oleaf.jpg);
+    background-size: contain;
+} */
+
+
 
 .button-container{
     display: flex;
     justify-content: center;
-    gap: 20px;
+    
 }
+
+#win-modal {
+    display: none;
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 15px;
+    top: 150px;
+    width: 200px; 
+    height: 250px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 2px solid brown;
+    border-width: 6px;
+    border-style: double;
+    background-color: yellow;
+  }
+
+  .close{
+    cursor: grab;
+  }
